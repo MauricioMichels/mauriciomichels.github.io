@@ -6,12 +6,19 @@
     <title></title>
 </head>
 <body>
-<p>
-    <p>
-        <button type="button" onclick="speakActualWord()" id="ouvir">Ouvir</button>
-        <button type="button" onclick="speakActualDefinition()" id="ouvir">Definição</button>
-    </p>
-</p>
+<div id="init">
+	Informe o nome:
+	<input type="text" name="name" id="name">
+	<button type="button"  onclick="initGame()">Iniciar</button>
+</div>
+<div id="game">
+	<h2 id="nameLabel">NameLabel</h2>
+	<button type="button" onclick="speakActualWord()">Ouvir</button>
+	<button type="button" onclick="speakActualDefinition()">Definição</button>
+	<!-- <button type="button" onclick="getNotUsedWord()">Get Work</button> -->
+	<input type="text" name="name" id="word">
+	<button type="button"  onclick="verifyWord()">Enviar</button>
+</div>
 <script type="text/javascript" src="./config.js" ></script>
 <script type="text/javascript" src="./app.js" ></script>
 </body>
