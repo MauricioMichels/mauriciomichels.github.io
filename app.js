@@ -1,11 +1,12 @@
 ﻿var actualWord = null;
 var actualPlayer = {};
 
+speechSynthesis.getVoices();
+
 var speak = function(word) {
 	var speech = new SpeechSynthesisUtterance();
-
+	speech.voice =  speechSynthesis.getVoices()[15];
 	speech.text = word;
-	speech.lang = 'pt-BR';
 	speech.rate = 1;
 	speech.pitch = 1;
 	speech.volume = 1;
