@@ -1,5 +1,6 @@
 ﻿var actualWord = null;
 var actualPlayer = {};
+var countSuccess = 0;
 
 speechSynthesis.getVoices();
 
@@ -51,7 +52,9 @@ var verifyWord = function() {
 	var word = document.querySelector('#word').value;
 	if (word.toUpperCase() == actualWord.word.toUpperCase()) {
 		alert('acertou carai');
+		countSuccess++;
 		nextWord();
+		document.querySelector('#points').innerHTML = countSuccess;
 		var word = document.querySelector('#word').value = "";
 	} else {
 		confirm('Errou');
@@ -67,6 +70,8 @@ var nextWord = function() {
 var initMode = function() {
 	document.querySelector('#init').style.display = 'block';
 	document.querySelector('#game').style.display = 'none';
+	countSuccess = 0;
+	document.querySelector('#points').innerHTML = countSuccess;
 }
 
 var gameMode = function() {
