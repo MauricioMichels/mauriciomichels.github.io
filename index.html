@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="http://code.jquery.com/jquery-2.1.0.js"></script>
-    
-    <title></title>
-</head>
-<body>
-<p>
-    <label>Insira a palavra
-        <input type="text" id="text" value="Your package has been recorded."></input>
-    </label>
-    <p>
-    <button type="button" id="ouvir">Ouvir</button>
-</p>
-</p>
-<p>
-    <label style="display:none">Volume
-        <input type="number" id="volume" value="100"></input>
-    </label>
-</p>
-<p>
-    <label>Rate
-        <input type="number" id="rate" value="1"></input>
-    </label>
-</p>
-<p>
-    <label>Pitch
-        <input type="number" id="pitch" value="1"></input>
-    </label>
-</p>
-<p>
-</p>
-<script type="text/javascript" src="./app.js" ></script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://code.jquery.com/jquery-2.1.0.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+		<title>Soletrando</title>
+	</head>
+	<body>
+		<div style="height: 100%;position: absolute;width: 100%;display: flex;justify-content: center;">
+			<div id="init" class="panel panel-default" style=" max-width: 300px;height: 150px;align-self: center;">
+				<div class="panel-heading" style="text-align: center;">
+					Informe o seu nome
+				</div>  
+				<div class="panel-body">
+					<input type="text" class="form-control" name="name" id="name">
+					<div style="margin-top: 10px;display: flex;justify-content: center;">
+						<button type="button" class="btn btn-default"  onclick="initGame()">Iniciar</button>
+					</div>
+				</div>
+			</div>
+			<div id="game" class="panel panel-default" style=" max-width: 500px;height: 300px;align-self: center;">
+				<div class="panel-heading" style="text-align: center;">
+					<h2 id="nameLabel">NameLabel</h2>
+				</div>  
+				<div class="panel-body">
+					Pontos:
+					<span id="points">0</span>
+					<div style="margin-top: 10px;display: flex;justify-content: center;">
+						<button type="button" class="btn btn-default" onclick="speakActualWord()">Ouvir</button>
+						<button type="button" class="btn btn-default" onclick="speakActualDefinition()">Definição</button>
+						<input type="text" class="form-control" name="name" id="word">
+						<button type="button" class="btn btn-default" onclick="verifyWord()">Enviar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./config.js" ></script>
+		<script type="text/javascript" src="./app.js" ></script>
+	</body>
 </html>

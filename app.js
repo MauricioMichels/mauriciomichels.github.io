@@ -1,30 +1,82 @@
-var palavras =["Acuar","Aplacar","Apocopar","Arfonte","Arretar","Burra","Escurão","Exornar","Exorar","Jadeita","Lênia","Lhano","Mansarda","Peculato","Secesso","Ucharia","Admoesta","Alarido","Alcoólatra","Alcunha","Alfândega ","Anticonstitucionalissimamente","Âmago","Aracnídeo","Ardiloso","Arroubo","Auscultador","Autoescola","Balbúrdia","Beatificação","Belicoso","Besugo","Bonançoso","Dilapidar","Engodar","Esbaforidamente","Exacerbado","Exceder","Excesso","Fenecimento","Fugaz","Fleumático","Frugal","Frugífero","Homizio","Ígneo","Ignóbil","Incomensurável","Implícito","Insolente","Irrupção","Incólume","Inócuo","Janota","Justapor","Loquaz","Melindre","Melissorafia","Mendicidade","Minucioso","Nefropata","Nictofobia","Nódoa","Obeso","Obsoleto","Obumbrar","Óbvio","Occipital","Otorrinolaringologista","Pachorrento","Pacóvio","Parco","Pedante","Perdulário","Perene","Permuta","Pernóstico","Petiz","Plissado","Perscrutar","Pândego","Pérfido","Ruar","Recôndito","Rubicundo","Sumidade","Suscitar","Tergiversar","Taciturno","Tênue","Veneta"];
+﻿var actualWord = null;
+var actualPlayer = {};
+var countSuccess = 0;
 
-var message = new SpeechSynthesisUtterance($("#text").val());
-var voices = speechSynthesis.getVoices();
+speechSynthesis.getVoices();
 
+var speak = function(word) {
+	var speech = new SpeechSynthesisUtterance();
+	speech.voice =  speechSynthesis.getVoices()[15];
+	speech.text = word;
+	speech.rate = 1;
+	speech.pitch = 1;
+	speech.volume = 1;
 
+	speechSynthesis.speak(speech);
+}
 
-$("input").on("change", function () {
-    console.log($(this).attr("id"), $(this).val());
-    message[$(this).attr("id")] = $(this).val();
-});
+var getNotUsedWord = function() {
+	var index = Math.floor(Math.random() * (words.length + 1));
+	return words[index];
+}
 
-$("select").on("change", function () {
-   
-});
+var removeUsedWord = function(word) {
+	words.splice(word, 1);
+}
 
-$("button").on("click", function () {
-         message.voice =  speechSynthesis.getVoices()[15];
-    speechSynthesis.speak(message);
-});
+var speakActualWord = function() {
+	speak(actualWord.word);
+}
 
-// Hack around voices bug
-var interval = setInterval(function () {
-    voices = speechSynthesis.getVoices();
-    if (voices.length) clearInterval(interval); else return;
+var speakActualDefinition = function() {
+	speak(actualWord.definition);
+}
 
-    for (var i = 0; i < voices.length; i++) {
-        $("select").append("<option value=\"" + i + "\">" + voices[i].name + "</option>");
-    }
-}, 10);
+var initGame = function() {
+	var name = document.querySelector('#name').value;
+	if (name) {
+		setName(name);
+		gameMode();
+		actualWord = getNotUsedWord();
+
+	} else {
+		alert('Informe um nome de usuario');
+	}
+}
+
+var setName = function(name) {
+	actualPlayer.name = name;
+	document.querySelector('#nameLabel').innerHTML = actualPlayer.name;
+}
+var verifyWord = function() {
+	var word = document.querySelector('#word').value;
+	if (word.toUpperCase() == actualWord.word.toUpperCase()) {
+		alert('acertou carai');
+		countSuccess++;
+		nextWord();
+		document.querySelector('#points').innerHTML = countSuccess;
+		var word = document.querySelector('#word').value = "";
+	} else {
+		confirm('Errou');
+		window.location.reload()
+	}
+}
+
+var nextWord = function() {
+	removeUsedWord(actualWord);
+	actualWord = getNotUsedWord();
+}
+
+var initMode = function() {
+	document.querySelector('#init').style.display = 'block';
+	document.querySelector('#game').style.display = 'none';
+	countSuccess = 0;
+	document.querySelector('#points').innerHTML = countSuccess;
+}
+
+var gameMode = function() {
+	document.querySelector('#game').style.display = 'block';
+	document.querySelector('#init').style.display = 'none';
+}
+
+initMode();
