@@ -1,8 +1,17 @@
 ﻿var actualWord = null;
 var actualPlayer = {};
 var countSuccess = 0;
+var time = 0;
+
 
 speechSynthesis.getVoices();
+
+var timer = function(){
+	setInterval(function(){
+		time += 1;
+
+	}, 1000);
+}
 
 var speak = function(word) {
 	var speech = new SpeechSynthesisUtterance();

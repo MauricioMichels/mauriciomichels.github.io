@@ -18,8 +18,8 @@
 				<div class="panel-body">
 					<input type="text" class="form-control" name="name" id="name">
 					<div style="margin-top: 10px;display: flex;justify-content: center;">
-						<button type="button" class="btn btn-default"  onclick="initGame()">Iniciar</button>
-					</div>
+						<button type="submit" class="btn btn-primary" onclick="initGame()">Iniciar</button>
+						</div>
 				</div>
 			</div>
 			<div id="game" class="panel panel-default" style=" max-width: 500px;height: 300px;align-self: center;">
@@ -27,13 +27,33 @@
 					<h2 id="nameLabel">NameLabel</h2>
 				</div>  
 				<div class="panel-body">
-					Pontos:
-					<span id="points">0</span>
-					<div style="margin-top: 10px;display: flex;justify-content: center;">
-						<button type="button" class="btn btn-default" onclick="speakActualWord()">Ouvir</button>
-						<button type="button" class="btn btn-default" onclick="speakActualDefinition()">Definição</button>
-						<input type="text" class="form-control" name="name" id="word">
-						<button type="button" class="btn btn-default" onclick="verifyWord()">Enviar</button>
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+							Pontos:
+							<span id="points">0</span>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right" >
+							Tempo:
+							<span id="time">0</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div style="margin-top: 10px;display: flex;justify-content: center;">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+										<button type="button" class="btn btn-default" onclick="speakActualWord()">Ouvir</button>
+										<button type="button" class="btn btn-default" onclick="speakActualDefinition()">Definição</button>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-lg">
+										<input type="text" class="form-control" name="name" id="word" placeholder="Digite a palavra aqui">
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mt-lg">
+										<button type="button" class="btn btn-primary" onclick="verifyWord()">Enviar</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
