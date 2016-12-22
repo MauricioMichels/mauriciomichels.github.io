@@ -25,5 +25,5 @@ var calcular = function(argument) {
 
 	total = cal22 + cal380 + cal40 + cal357 + calRT + cal12;
 
-	document.querySelector('#total').innerHTML = total + " + 25.00 = " + (total+25);
+	document.querySelector('#total').innerHTML = "25.00 + " + total + " = " +(total+25);
 }
