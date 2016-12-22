@@ -1,91 +1,29 @@
-﻿var actualWord = null;
-var actualPlayer = {};
-var countSuccess = 0;
-var time = 0;
+﻿var cal22 = 0; 
+var cal380 = 0; 
+var cal40 = 0; 
+var cal357 = 0; 
+var calRT = 0; 
+var cal12 = 0; 
+var total = 0;
 
 
-speechSynthesis.getVoices();
 
-var timer = function(){
-	setInterval(function(){
-		time += 1;
+var calcular = function(argument) {
 
-	}, 1000);
+	cal22 = document.querySelector('#cal22').value * 0.80;
+	document.querySelector('#resultCal22').innerHTML = "R$: " + cal22;
+	cal380 = document.querySelector('#cal380').value * 1.50;
+	document.querySelector('#resultCal380').innerHTML = "R$: " + cal380;
+	cal40 = document.querySelector('#cal40').value * 1.80;
+	document.querySelector('#resultCal40').innerHTML = "R$: " + cal40;
+	cal357 = document.querySelector('#cal357').value * 3.50;
+	document.querySelector('#resultCal357').innerHTML = "R$: " + cal357;
+	calRT = document.querySelector('#calRT').value * 4.60;
+	document.querySelector('#resultCalRT').innerHTML = "R$: " + calRT;
+	cal12 = document.querySelector('#cal12').value * 3.00;
+	document.querySelector('#resultCal12').innerHTML = "R$: " + cal12;
+
+	total = cal22 + cal380 + cal40 + cal357 + calRT + cal12;
+
+	document.querySelector('#total').innerHTML = total;
 }
-
-var speak = function(word) {
-	var speech = new SpeechSynthesisUtterance();
-	speech.voice =  speechSynthesis.getVoices()[15];
-	speech.text = word;
-	speech.rate = 1;
-	speech.pitch = 1;
-	speech.volume = 1;
-
-	speechSynthesis.speak(speech);
-}
-
-var getNotUsedWord = function() {
-	var index = Math.floor(Math.random() * (words.length + 1));
-	return words[index];
-}
-
-var removeUsedWord = function(word) {
-	words.splice(word, 1);
-}
-
-var speakActualWord = function() {
-	speak(actualWord.word);
-}
-
-var speakActualDefinition = function() {
-	speak(actualWord.definition);
-}
-
-var initGame = function() {
-	var name = document.querySelector('#name').value;
-	if (name) {
-		setName(name);
-		gameMode();
-		actualWord = getNotUsedWord();
-
-	} else {
-		alert('Informe um nome de usuario');
-	}
-}
-
-var setName = function(name) {
-	actualPlayer.name = name;
-	document.querySelector('#nameLabel').innerHTML = actualPlayer.name;
-}
-var verifyWord = function() {
-	var word = document.querySelector('#word').value;
-	if (word.toUpperCase() == actualWord.word.toUpperCase()) {
-		alert('acertou carai');
-		countSuccess++;
-		nextWord();
-		document.querySelector('#points').innerHTML = countSuccess;
-		var word = document.querySelector('#word').value = "";
-	} else {
-		confirm('Errou');
-		window.location.reload()
-	}
-}
-
-var nextWord = function() {
-	removeUsedWord(actualWord);
-	actualWord = getNotUsedWord();
-}
-
-var initMode = function() {
-	document.querySelector('#init').style.display = 'block';
-	document.querySelector('#game').style.display = 'none';
-	countSuccess = 0;
-	document.querySelector('#points').innerHTML = countSuccess;
-}
-
-var gameMode = function() {
-	document.querySelector('#game').style.display = 'block';
-	document.querySelector('#init').style.display = 'none';
-}
-
-initMode();
