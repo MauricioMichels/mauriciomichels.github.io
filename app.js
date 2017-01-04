@@ -1,4 +1,27 @@
-﻿var cal22 = 0; 
+﻿var limpar = function() {
+
+	document.querySelector('#cal22').value  = null;
+	document.querySelector('#cal380').value = null;
+	document.querySelector('#cal357').value = null;
+	document.querySelector('#calRT').value  = null;
+	document.querySelector('#cal12').value  = null;
+
+	document.querySelector('#resultCal22').innerHTML = 	"";
+	document.querySelector('#resultCal380').innerHTML = "";
+	document.querySelector('#resultCal40').innerHTML = 	"";
+	document.querySelector('#resultCal357').innerHTML = "";
+	document.querySelector('#resultCalRT').innerHTML = 	"";
+	document.querySelector('#resultCal12').innerHTML = 	"";
+
+	document.querySelector('#total').innerHTML = "";
+	document.querySelector('#final').innerHTML = "";
+
+}
+
+
+//---------------------------- Tiro dado ----------------------------//
+
+var cal22 = 0; 
 var cal380 = 0; 
 var cal40 = 0; 
 var cal357 = 0; 
@@ -32,22 +55,27 @@ var calcular = function() {
 };
 
 
-var limpar = function() {
 
-	document.querySelector('#cal22').value  = null;
-	document.querySelector('#cal380').value = null;
-	document.querySelector('#cal357').value = null;
-	document.querySelector('#calRT').value  = null;
-	document.querySelector('#cal12').value  = null;
 
-	document.querySelector('#resultCal22').innerHTML = 	"";
-	document.querySelector('#resultCal380').innerHTML = "";
-	document.querySelector('#resultCal40').innerHTML = 	"";
-	document.querySelector('#resultCal357').innerHTML = "";
-	document.querySelector('#resultCalRT').innerHTML = 	"";
-	document.querySelector('#resultCal12').innerHTML = 	"";
 
-	document.querySelector('#total').innerHTML = "";
-	document.querySelector('#final').innerHTML = "";
+//---------------------------- Dinheiro ----------------------------//
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
