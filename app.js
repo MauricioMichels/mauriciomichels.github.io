@@ -70,6 +70,7 @@ var calcular = function() {
 
 var redirecionaWhats = function(){
 	var num = document.querySelector('#numWhats').value;
+	num = num.num = replaceAll(" ", "").replaceAll("-", "");
 	var url = "https://api.whatsapp.com/send?phone=55" + num;
 	window.open(url);	
 };
